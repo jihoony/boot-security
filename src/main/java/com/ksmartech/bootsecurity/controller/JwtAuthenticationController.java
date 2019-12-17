@@ -2,6 +2,7 @@ package com.ksmartech.bootsecurity.controller;
 
 import com.ksmartech.bootsecurity.cmn.BaseController;
 import com.ksmartech.bootsecurity.config.JwtTokenUtil;
+import com.ksmartech.bootsecurity.model.UserDTO;
 import com.ksmartech.bootsecurity.service.JwtUserDetailsService;
 import com.ksmartech.bootsecurity.model.JwtRequest;
 import com.ksmartech.bootsecurity.model.JwtResponse;
@@ -40,12 +41,14 @@ public class JwtAuthenticationController extends BaseController {
         return ResponseEntity.ok(new JwtResponse(token));
     }
 
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public ResponseEntity<?> saveUser(@RequestBody UserDTO user) throws Exception {
+        return ResponseEntity.ok(userDetailsService.save(user));
+    }
+
     private void authenticate(String username, String password) throws Exception {
 
         try {
-            logger.debug("username: " + username);
-            logger.debug("password: " + password);
-
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
 
         } catch (DisabledException e) {

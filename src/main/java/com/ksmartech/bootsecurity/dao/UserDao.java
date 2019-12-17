@@ -15,11 +15,11 @@ public class UserDao {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column
+    @Column(name = "username")
     private String username;
 
-    @Column
     @JsonIgnore
+    @Column(name = "password")
     private String password;
 
     @OneToMany

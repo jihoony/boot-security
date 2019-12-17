@@ -2,10 +2,7 @@ package com.ksmartech.bootsecurity.dao;
 
 import org.springframework.security.core.GrantedAuthority;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -15,6 +12,9 @@ import java.util.List;
 public class RoleDao implements GrantedAuthority {
     @Id
     private String id;
+
+    @Column
+    private String description;
 
     @OneToMany
     private final List<OperationDao> allowedOperations = new ArrayList<>();

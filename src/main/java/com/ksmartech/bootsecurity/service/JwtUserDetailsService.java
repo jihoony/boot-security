@@ -1,6 +1,7 @@
 package com.ksmartech.bootsecurity.service;
 
 import com.ksmartech.bootsecurity.cmn.BaseComponent;
+import com.ksmartech.bootsecurity.dao.RoleDao;
 import com.ksmartech.bootsecurity.dao.UserDao;
 import com.ksmartech.bootsecurity.model.UserDTO;
 import com.ksmartech.bootsecurity.repository.UserRepository;
@@ -35,9 +36,11 @@ public class JwtUserDetailsService extends BaseComponent implements UserDetailsS
     }
 
     public UserDao save(UserDTO user) {
+
         UserDao newUser = new UserDao();
         newUser.setUsername(user.getUsername());
         newUser.setPassword(bcryptEncoder.encode(user.getPassword()));
+
         return userDao.save(newUser);
     }
 }

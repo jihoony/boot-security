@@ -1,4 +1,4 @@
-package com.ksmartech.bootsecurity.config;
+package com.ksmartech.bootsecurity.component;
 
 import com.ksmartech.bootsecurity.cmn.BaseComponent;
 import io.jsonwebtoken.Claims;

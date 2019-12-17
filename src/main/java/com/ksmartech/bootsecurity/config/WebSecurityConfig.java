@@ -1,5 +1,7 @@
 package com.ksmartech.bootsecurity.config;
 
+import com.ksmartech.bootsecurity.component.JwtAuthenticationEntryPoint;
+import com.ksmartech.bootsecurity.component.JwtRequestFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

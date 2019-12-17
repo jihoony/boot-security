@@ -1,7 +1,7 @@
 package com.ksmartech.bootsecurity.controller;
 
 import com.ksmartech.bootsecurity.cmn.BaseController;
-import com.ksmartech.bootsecurity.config.JwtTokenUtil;
+import com.ksmartech.bootsecurity.component.JwtTokenUtil;
 import com.ksmartech.bootsecurity.model.UserDTO;
 import com.ksmartech.bootsecurity.service.JwtUserDetailsService;
 import com.ksmartech.bootsecurity.model.JwtRequest;

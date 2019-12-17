@@ -38,6 +38,8 @@ public class JwtAuthenticationController extends BaseController {
 
         final String token = jwtTokenUtil.generateToken(userDetails);
 
+        logger.debug("token: " + token);
+
         return ResponseEntity.ok(new JwtResponse(token));
     }
 

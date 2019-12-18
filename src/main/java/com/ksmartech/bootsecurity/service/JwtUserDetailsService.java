@@ -6,6 +6,8 @@ import com.ksmartech.bootsecurity.dao.UserDao;
 import com.ksmartech.bootsecurity.model.UserDTO;
 import com.ksmartech.bootsecurity.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -14,6 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class JwtUserDetailsService extends BaseComponent implements UserDetailsService {
@@ -31,8 +34,11 @@ public class JwtUserDetailsService extends BaseComponent implements UserDetailsS
         if (user == null) {
             throw new UsernameNotFoundException("User not found with username: " + username);
         }
-        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),
-                new ArrayList<>());
+
+        List<GrantedAuthority> authorities = new ArrayList<>();
+        authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
+
+        return new User(user.getUsername(), user.getPassword(), authorities);
     }
 
     public UserDao save(UserDTO user) {
